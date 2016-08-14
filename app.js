@@ -19,7 +19,7 @@ $("#addTrainBtn").on("click", function() {
     var firstTrainUnix = moment($("#firstTrainInput").val().trim(), "HH:mm").subtract(10, "years").format("X");
     var frequency = $("#frequencyInput").val().trim();
 
-    // Creates local "temporary" object for holding train data
+    // Variable to hold object
     var newTrain = {
         name: trainName,
         destination: destination,
@@ -27,25 +27,25 @@ $("#addTrainBtn").on("click", function() {
         frequency: frequency
     }
 
-    // Upload to the database
+    //pushes to database
     trainData.push(newTrain);
 
-    // Log  everything to console
+    
     console.log(newTrain.name);
     console.log(newTrain.destination);
     console.log(firstTrainUnix);
     console.log(newTrain.frequency)
 
-    // Alert
+    
     alert("Train successfully added");
 
-    // Clears all text-boxes
+ 
     $("#trainNameInput").val("");
     $("#destinationInput").val("");
     $("#firstTrainInput").val("");
     $("#frequencyInput").val("");
 
-    //  Calculates when next train arrives.
+    
     return false;
 });
 
@@ -55,7 +55,7 @@ trainData.on("child_added", function(childSnapshot) {
 
     console.log(childSnapshot.val());
 
-    //bank
+    
     var tName = childSnapshot.val().name;
     var tDestination = childSnapshot.val().destination;
     var tFrequency = childSnapshot.val().frequency;
